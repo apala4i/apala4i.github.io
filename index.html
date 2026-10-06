@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>David Kalandadze — Go Backend Engineer</title>
+<meta name="description" content="Go Backend Engineer · Applied AI / LLM Systems. High-load microservices at Avito & Wildberries, RAG pipelines, LLM features in production. Dublin, Ireland.">
+<meta property="og:title" content="David Kalandadze — Go Backend Engineer">
+<meta property="og:description" content="High-load Go microservices + production LLM systems. Dublin · open to remote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2300ADD8'/><text x='50' y='68' font-size='52' font-family='monospace' font-weight='700' text-anchor='middle' fill='white'>DK</text></svg>">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{
+  --bg:#f6f8fb; --bg2:#ffffff; --fg:#0d1726; --muted:#5b6b80; --line:#dde4ee;
+  --accent:#00ADD8; --accent2:#7c5cff; --ok:#16a34a; --card:#ffffff; --shadow:0 10px 30px rgba(13,23,38,.08);
+  --term:#0b1220; --termfg:#d6e2f0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#070b14; --bg2:#0c1220; --fg:#e8eef7; --muted:#8a9ab0; --line:#1c2638;
+    --card:#0e1626; --shadow:0 10px 40px rgba(0,0,0,.4); --term:#050911; --termfg:#cfe3f5;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#070b14; --bg2:#0c1220; --fg:#e8eef7; --muted:#8a9ab0; --line:#1c2638;
+  --card:#0e1626; --shadow:0 10px 40px rgba(0,0,0,.4); --term:#050911; --termfg:#cfe3f5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden;transition:background .3s,color .3s}
+a{color:inherit}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:90px 0}
+h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin-bottom:10px}
+.kicker{font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:14px;margin-bottom:8px}
+.sub{color:var(--muted);max-width:640px;margin-bottom:36px}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 75%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font-family:"JetBrains Mono",monospace;font-weight:600;text-decoration:none}
+.logo b{color:var(--accent)}
+.navlinks{display:flex;gap:22px;align-items:center}
+.navlinks a{text-decoration:none;color:var(--muted);font-size:14px;transition:color .2s}
+.navlinks a:hover{color:var(--fg)}
+.iconbtn{background:var(--card);border:1px solid var(--line);color:var(--fg);border-radius:10px;height:36px;min-width:36px;padding:0 10px;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+@media (max-width:760px){.navlinks a{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:80px}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:99px;background:var(--card);font-size:13px;color:var(--muted);margin-bottom:24px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(22,163,74,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+.hero h1{font-size:clamp(44px,8vw,88px);line-height:1;letter-spacing:-.04em;font-weight:800}
+.hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.typed{font-family:"JetBrains Mono",monospace;font-size:clamp(17px,2.4vw,24px);margin:22px 0 14px;min-height:1.6em;color:var(--fg)}
+.typed .p{color:var(--accent)}
+.caret{display:inline-block;width:.55em;height:1.1em;background:var(--accent);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p.lead{color:var(--muted);max-width:620px;font-size:18px;margin-bottom:32px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:600;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;font-size:15px;transition:transform .15s,box-shadow .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--accent)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#0090b5);color:#fff;border-color:transparent}
+.scrollhint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:12px;font-family:"JetBrains Mono",monospace;z-index:1;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translate(-50%,6px)}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;position:relative;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s}
+.stat:hover{transform:translateY(-4px);border-color:var(--accent)}
+.stat .n{font-size:46px;font-weight:800;letter-spacing:-.03em;line-height:1;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{color:var(--muted);font-size:14px;margin-top:10px}
+.stat .co{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--accent);margin-top:12px;text-transform:uppercase;letter-spacing:.08em}
+
+/* skills */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.group{margin-bottom:22px}
+.group h4{font-size:13px;color:var(--muted);font-weight:500;margin-bottom:10px;font-family:"JetBrains Mono",monospace}
+.chip{padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:14px;font-weight:500;color:var(--fg);transition:all .2s;user-select:none}
+.chip:hover{border-color:var(--accent)}
+.chip.on{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(1.04)}
+.hint{font-size:13px;color:var(--muted);font-family:"JetBrains Mono",monospace;margin-top:4px}
+.hint button{background:none;border:none;color:var(--accent);cursor:pointer;font:inherit;text-decoration:underline}
+
+/* timeline */
+.tl{position:relative;padding-left:28px}
+.tl:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent2))}
+.job{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px;transition:opacity .3s,border-color .3s,transform .3s}
+.job:before{content:"";position:absolute;left:-27px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.job.dim{opacity:.35}
+.job.match{border-color:var(--accent)}
+.jobhead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer;flex-wrap:wrap}
+.jobhead h3{font-size:21px;letter-spacing:-.01em}
+.jobhead h3 span{color:var(--accent)}
+.when{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);white-space:nowrap}
+.stack{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tag{font-family:"JetBrains Mono",monospace;font-size:12px;padding:3px 9px;border-radius:6px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.tag.hl{background:var(--accent);color:#fff}
+.desc{color:var(--muted);font-size:15px}
+.more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.job.open .more{grid-template-rows:1fr}
+.more>div{overflow:hidden}
+.more ul{list-style:none;margin-top:16px}
+.more li{padding:10px 0 10px 28px;position:relative;border-top:1px dashed var(--line);font-size:15px;transition:background .3s}
+.more li:before{content:"→";position:absolute;left:4px;color:var(--accent);font-family:"JetBrains Mono",monospace}
+.more li.hl{background:color-mix(in srgb,var(--accent) 10%,transparent);border-radius:8px}
+.more li b{color:var(--accent)}
+.toggle{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent);margin-top:10px;background:none;border:none;cursor:pointer;padding:0}
+
+/* terminal */
+.term{background:var(--term);border-radius:16px;border:1px solid #1c2840;box-shadow:var(--shadow);overflow:hidden;color:var(--termfg)}
+.termbar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#0f1a2e;border-bottom:1px solid #1c2840}
+.termbar i{width:12px;height:12px;border-radius:50%;display:block}
+.termbar span{margin-left:10px;font-family:"JetBrains Mono",monospace;font-size:12px;color:#7d8fa8}
+#out{font-family:"JetBrains Mono",monospace;font-size:14px;padding:18px;height:360px;overflow-y:auto;white-space:pre-wrap;word-break:break-word}
+#out .c{color:#00ADD8}#out .g{color:#4ade80}#out .y{color:#facc15}#out .m{color:#7d8fa8}#out .v{color:#b69cff}
+#out a{color:#00ADD8}
+.inrow{display:flex;align-items:center;gap:8px;padding:0 18px 16px;font-family:"JetBrains Mono",monospace;font-size:14px}
+.inrow label{color:#4ade80;white-space:nowrap}
+#cmd{flex:1;background:transparent;border:none;outline:none;color:var(--termfg);font:inherit;min-width:0}
+.quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.quick button{font-family:"JetBrains Mono",monospace;font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
+.quick button:hover{border-color:var(--accent);color:var(--accent)}
+
+/* edu */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.card h3{font-size:18px;margin-bottom:4px}
+.card .when{display:block;margin-top:8px}
+.progress{height:8px;background:var(--line);border-radius:99px;margin-top:14px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.lang{display:flex;justify-content:space-between;margin-top:12px;font-size:15px}
+.lang span:last-child{color:var(--muted);font-family:"JetBrains Mono",monospace}
+
+/* contact */
+.contact{text-align:center}
+.contact .sub{margin:0 auto 32px}
+.contact .ctas{justify-content:center}
+.copied{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:10px;font-size:14px;transition:transform .3s;z-index:100}
+.copied.show{transform:translateX(-50%) translateY(0)}
+footer{padding:30px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);font-family:"JetBrains Mono",monospace}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(3,6,12,.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:90;padding:16px}
+.modal.show{display:flex}
+.modal .box{background:#fff;color:#0d1726;border-radius:22px;padding:28px;text-align:center;max-width:360px;width:100%;animation:pop .25s ease}
+@keyframes pop{from{transform:scale(.9);opacity:0}}
+#qr{display:flex;justify-content:center;margin:18px 0}
+#qr img,#qr canvas{width:260px!important;height:260px!important;max-width:100%}
+.modal .box p{color:#5b6b80;font-size:14px}
+.modal .box .btn{margin-top:16px;background:#0d1726;color:#fff;border:none}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">~/<b>david</b>.go</a>
+    <div class="navlinks">
+      <a href="#impact">Impact</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#terminal">Terminal</a>
+      <a href="#contact">Contact</a>
+      <button class="iconbtn" id="qrBtn" title="Show QR code">▦ QR</button>
+      <button class="iconbtn" id="themeBtn" title="Toggle theme">◐</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="net"></canvas>
+  <div class="wrap">
+    <div class="badge"><span class="dot"></span> Open to opportunities · Dublin, Ireland · Remote-friendly</div>
+    <h1>David<br><span class="grad">Kalandadze</span></h1>
+    <div class="typed"><span class="p">$ </span><span id="typed"></span><span class="caret"></span></div>
+    <p class="lead">I build Go microservices for high-load marketplaces (<b>Avito</b>, <b>Wildberries</b>) — and ship production LLM features on top of them: RAG, call summarization, ML-based quality assessment.</p>
+    <div class="ctas">
+      <a class="btn primary" href="David_Kalandadze_CV.pdf" download>↓ Download CV</a>
+      <a class="btn" href="#contact">✉ Get in touch</a>
+      <a class="btn" href="#terminal">&gt;_ Try the terminal</a>
+    </div>
+  </div>
+  <div class="scrollhint">scroll ↓</div>
+</header>
+
+<section id="impact">
+  <div class="wrap">
+    <div class="kicker reveal">// impact</div>
+    <h2 class="reveal">Numbers I've moved</h2>
+    <p class="sub reveal">Hover or tap a card to see where it came from.</p>
+    <div class="stats">
+      <div class="stat reveal" data-job="avito"><div class="n" data-to="5" data-suf="×">0</div><div class="l">faster SQL processing with LATERAL JOIN rewrite</div><div class="co">Avito</div></div>
+      <div class="stat reveal" data-job="avito"><div class="n" data-to="60" data-suf="%">0</div><div class="l">less manual review time via ML call-quality scoring</div><div class="co">Avito</div></div>
+      <div class="stat reveal" data-job="croc"><div class="n" data-to="4" data-suf="×">0</div><div class="l">upload throughput with low-level parallel S3 API</div><div class="co">CROC</div></div>
+      <div class="stat reveal" data-job="wb"><div class="n" data-to="2" data-suf="×">0</div><div class="l">Outbox throughput via distributed locks & horizontal scaling</div><div class="co">Wildberries</div></div>
+      <div class="stat reveal" data-job="wb"><div class="n" data-to="3" data-suf="+ yrs">0</div><div class="l">of production Go on high-load systems</div><div class="co">2022 → now</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="kicker reveal">// skills</div>
+    <h2 class="reveal">Stack</h2>
+    <p class="sub reveal">Click any technology — the experience below lights up where I used it.</p>
+    <div id="skillGroups"></div>
+    <div class="hint" id="skillHint">no filter · <button id="clearSkill">reset</button></div>
+  </div>
+</section>
+
+<section id="experience" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker reveal">// experience</div>
+    <h2 class="reveal">Where I've shipped</h2>
+    <p class="sub reveal">Click a card to expand the details.</p>
+    <div class="tl" id="jobs"></div>
+  </div>
+</section>
+
+<section id="terminal" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker reveal">// interactive</div>
+    <h2 class="reveal">Ask the shell</h2>
+    <p class="sub reveal">A tiny CLI about me. Type <span class="mono">help</span> or tap a command.</p>
+    <div class="term reveal">
+      <div class="termbar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>david@dublin: ~</span></div>
+      <div id="out"></div>
+      <form class="inrow" id="form" autocomplete="off"><label>david@dublin:~$</label><input id="cmd" spellcheck="false" autocapitalize="off" aria-label="terminal command"></form>
+    </div>
+    <div class="quick" id="quick"></div>
+  </div>
+</section>
+
+<section id="education" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker reveal">// education</div>
+    <h2 class="reveal">Education & languages</h2>
+    <div class="grid2" style="margin-top:28px">
+      <div class="card reveal">
+        <h3>M.Sc. Computing</h3>
+        <div class="desc">Atlantic Technological University (ATU), Ireland</div>
+        <span class="when">Jan 2026 – Jan 2027 · in progress</span>
+        <div class="progress"><i id="msc"></i></div>
+      </div>
+      <div class="card reveal">
+        <h3>B.Sc. Software Engineering</h3>
+        <div class="desc">Bauman Moscow State Technical University (BMSTU)</div>
+        <span class="when">2020 – 2025 · completed</span>
+        <div class="progress"><i data-w="100"></i></div>
+      </div>
+      <div class="card reveal">
+        <h3>Languages</h3>
+        <div class="lang"><span>English</span><span>C1</span></div>
+        <div class="progress"><i data-w="85"></i></div>
+        <div class="lang"><span>Russian</span><span>Native</span></div>
+        <div class="progress"><i data-w="100"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="kicker reveal">// contact</div>
+    <h2 class="reveal">Let's talk</h2>
+    <p class="sub reveal">Looking for a Go backend or applied-AI role in Dublin or remote. Fastest way to reach me is Telegram.</p>
+    <div class="ctas reveal">
+      <button class="btn primary" id="copyMail">✉ apala4igm@gmail.com</button>
+      <a class="btn" href="https://t.me/apala4i" target="_blank" rel="noopener">✈ Telegram @apala4i</a>
+      <button class="btn" id="vcard">👤 Save contact</button>
+      <a class="btn" href="David_Kalandadze_CV.pdf" download>↓ CV (PDF)</a>
+      <button class="btn" id="qrBtn2">▦ QR code</button>
+    </div>
+  </div>
+</section>
+
+<footer>built with plain HTML & a little JS · <span id="yr"></span> · David Kalandadze</footer>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <h3>Scan to keep my page</h3>
+    <div id="qr"></div>
+    <p id="qrUrl"></p>
+    <button class="btn" id="closeQr">Close</button>
+  </div>
+</div>
+<div class="copied" id="toast">Copied!</div>
+
+<script>
+const EMAIL="apala4igm@gmail.com", TG="apala4i";
+const JOBS=[
+ {id:"avito",role:"Golang Developer",co:"Avito",when:"Dec 2023 – Present",stack:["Go","PostgreSQL","Kafka","Redis"],
+  desc:"Microservices for an operational CRM sales platform handling critical business processes. Led code reviews, task decomposition and feature ownership across teams. Mentored engineers and ran technical interviews.",
+  items:[
+   ["Optimized SQL query performance via LATERAL JOIN — <b>5× faster</b> processing, reduced DB load",["PostgreSQL","SQL"]],
+   ["Integrated an ML-based call quality assessment system — <b>−60%</b> manual review time",["ML model integration"]],
+   ["AI-powered call summarization pipeline using LangChain / EINO",["LLM integration","LangChain","EINO"]],
+   ["RAG-based Q&A bot for knowledge retrieval across internal documentation",["RAG","LLM integration"]],
+   ["Automated GDPR compliance checker built on static analysis tooling",["Go"]]
+  ]},
+ {id:"wb",role:"Golang Developer",co:"Wildberries",when:"Mar 2023 – Dec 2023",stack:["Go","PostgreSQL","NATS","MySQL"],
+  desc:"Microservices for warehouse management (WMS) and logistics at Russia's largest marketplace. Led a team of 2 on a turnstile access-control system for distribution centers. Key maintainer across multiple projects; ran backend interviews.",
+  items:[
+   ["Architected a barcode storage algorithm with CRC5 validation, resolving critical pool-capacity limits — <b>adopted company-wide</b>",["Go","PostgreSQL"]],
+   ["<b>2×</b> Outbox pattern performance via distributed locking & horizontal scaling",["PostgreSQL","NATS","Kubernetes"]],
+   ["Offline-capable employee data sync for turnstile infrastructure",["Go","MySQL"]],
+   ["Secure encryption service for confidential HR data",["Go"]]
+  ]},
+ {id:"croc",role:"Golang / Java Developer",co:"CROC",when:"Feb 2022 – Mar 2023",stack:["Go","Java","AWS S3","PostgreSQL"],
+  desc:"Strategic monolith-to-microservices migration including a business-logic rewrite from Java to Go. Built a geospatial data service handling terabyte-scale upload and export.",
+  items:[
+   ["High-performance parallel file upload on low-level AWS S3 APIs — <b>4× throughput</b>",["AWS S3","Go"]],
+   ["Migrated critical business logic from a Java monolith to a Go microservice",["Java","Go"]],
+   ["Optimized geospatial data processing — <b>1.5× faster</b> export",["PostgreSQL","Go"]]
+  ]}
+];
+const SKILLS={
+ "Languages":["Go","Java","SQL"],
+ "Data & Messaging":["PostgreSQL","MySQL","Redis","Kafka","NATS","AWS S3"],
+ "AI / LLM":["RAG","LLM integration","LangChain","EINO","ML model integration"],
+ "Infra & Observability":["Docker","Kubernetes","Linux","Grafana","Sentry","Jaeger","Elastic Stack"]
+};
+
+/* theme */
+const root=document.documentElement;
+try{const t=localStorage.getItem("theme");if(t)root.dataset.theme=t}catch(e){}
+document.getElementById("themeBtn").onclick=()=>{
+  const dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme=dark?"light":"dark";
+  try{localStorage.setItem("theme",root.dataset.theme)}catch(e){}
+};
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+/* typed */
+const phrases=["go run ./backend --load=high","Go Backend Engineer","Applied AI / LLM Systems","RAG · LangChain · EINO","Kafka · PostgreSQL · Redis","make it 5× faster"];
+(function(){let i=0,j=0,del=false;const el=document.getElementById("typed");
+ (function tick(){const p=phrases[i];el.textContent=p.slice(0,j);
+  if(!del&&j<p.length){j++;setTimeout(tick,55)}
+  else if(!del){del=true;setTimeout(tick,1600)}
+  else if(j>0){j--;setTimeout(tick,25)}
+  else{del=false;i=(i+1)%phrases.length;setTimeout(tick,300)}})();})();
+
+/* network canvas */
+(function(){const c=document.getElementById("net"),x=c.getContext("2d");let W,H,pts=[],mouse={x:-999,y:-999};
+ const dpr=Math.min(devicePixelRatio||1,2);
+ function size(){W=c.offsetWidth;H=c.offsetHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+  const n=Math.min(90,Math.floor(W*H/14000));pts=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+1}))}
+ size();addEventListener("resize",size);
+ c.parentElement.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top});
+ c.parentElement.addEventListener("pointerleave",()=>{mouse.x=mouse.y=-999});
+ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ (function loop(){x.clearRect(0,0,W,H);
+  for(const p of pts){if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}
+   const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.hypot(dx,dy);if(d<120){p.x+=dx/d*1.5;p.y+=dy/d*1.5}}
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+   if(d<130){x.strokeStyle=`rgba(0,173,216,${(1-d/130)*.35})`;x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+  for(const p of pts){const near=Math.hypot(p.x-mouse.x,p.y-mouse.y)<160;x.fillStyle=near?"#7c5cff":"rgba(0,173,216,.8)";x.beginPath();x.arc(p.x,p.y,near?p.r+1.5:p.r,0,7);x.fill()}
+  requestAnimationFrame(loop)})();})();
+
+/* jobs */
+const jobsEl=document.getElementById("jobs");
+JOBS.forEach((j,k)=>{const d=document.createElement("div");d.className="job reveal"+(k===0?" open":"");d.id="job-"+j.id;
+ d.innerHTML=`<div class="jobhead"><div><h3>${j.role} <span>@ ${j.co}</span></h3></div><div class="when">${j.when}</div></div>
+ <div class="stack">${j.stack.map(s=>`<span class="tag" data-s="${s}">${s}</span>`).join("")}</div>
+ <div class="desc">${j.desc}</div>
+ <div class="more"><div><ul>${j.items.map(([t,s])=>`<li data-s="${s.join("|")}">${t}</li>`).join("")}</ul></div></div>
+ <button class="toggle">${k===0?"− less":"+ details"}</button>`;
+ const tog=()=>{d.classList.toggle("open");d.querySelector(".toggle").textContent=d.classList.contains("open")?"− less":"+ details"};
+ d.querySelector(".jobhead").onclick=tog;d.querySelector(".toggle").onclick=tog;jobsEl.appendChild(d)});
+
+/* skills filter */
+const sg=document.getElementById("skillGroups");let active=null;
+for(const [g,list] of Object.entries(SKILLS)){const w=document.createElement("div");w.className="group reveal";
+ w.innerHTML=`<h4>${g}</h4><div class="chips">${list.map(s=>`<span class="chip" data-s="${s}">${s}</span>`).join("")}</div>`;sg.appendChild(w)}
+function used(job,s){return job.stack.includes(s)||job.items.some(i=>i[1].includes(s))||(s==="SQL"&&job.stack.some(x=>/SQL/.test(x)))}
+function setSkill(s){active=active===s?null:s;
+ document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c.dataset.s===active));
+ const hint=document.getElementById("skillHint");let hits=0;
+ JOBS.forEach(j=>{const el=document.getElementById("job-"+j.id);
+  el.querySelectorAll(".tag").forEach(t=>t.classList.toggle("hl",t.dataset.s===active));
+  el.querySelectorAll("li").forEach(li=>li.classList.toggle("hl",!!active&&li.dataset.s.split("|").includes(active)));
+  if(!active){el.classList.remove("dim","match");return}
+  const u=used(j,active);if(u)hits++;el.classList.toggle("dim",!u);el.classList.toggle("match",u);
+  if(u&&!el.classList.contains("open")){el.classList.add("open");el.querySelector(".toggle").textContent="− less"}});
+ hint.innerHTML=active?`filter: <span style="color:var(--accent)">${active}</span> · ${hits?hits+" role"+(hits>1?"s":""):"part of the daily toolbox"} · <button id="clearSkill">reset</button>`:`no filter · <button id="clearSkill">reset</button>`;
+ document.getElementById("clearSkill").onclick=()=>{if(active)setSkill(active)};
+ if(active&&hits)document.getElementById("experience").scrollIntoView({behavior:"smooth",block:"start"});}
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>setSkill(c.dataset.s));
+document.getElementById("clearSkill").onclick=()=>{if(active)setSkill(active)};
+
+/* stat -> job */
+document.querySelectorAll(".stat").forEach(s=>s.onclick=()=>{const el=document.getElementById("job-"+s.dataset.job);
+ el.scrollIntoView({behavior:"smooth",block:"center"});if(!el.classList.contains("open"))el.querySelector(".toggle").click();
+ el.animate([{boxShadow:"0 0 0 0 rgba(0,173,216,.6)"},{boxShadow:"0 0 0 14px rgba(0,173,216,0)"}],{duration:900,iterations:2})});
+
+/* reveal + counters + progress */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add("in");
+ t.querySelectorAll&&t.querySelectorAll(".n[data-to]").forEach(count);
+ t.querySelectorAll&&t.querySelectorAll(".progress i").forEach(p=>p.style.width=(p.dataset.w||p.style.getPropertyValue("--w"))+"%");
+ io.unobserve(t)}),{threshold:.15});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+function count(el){const to=+el.dataset.to,suf=el.dataset.suf||"",t0=performance.now(),dur=1400;
+ (function f(t){const k=Math.min(1,(t-t0)/dur),v=to*(1-Math.pow(1-k,3));el.textContent=(to<10?v.toFixed(k<1?1:0):Math.round(v))+suf;if(k<1)requestAnimationFrame(f)})(t0)}
+(function(){const s=new Date(2026,0,1),e=new Date(2027,0,1),p=Math.max(3,Math.min(100,(Date.now()-s)/(e-s)*100));document.getElementById("msc").dataset.w=p.toFixed(0)})();
+
+/* toast / copy */
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+function copyMail(){(navigator.clipboard?navigator.clipboard.writeText(EMAIL):Promise.reject()).then(()=>toast("Email copied ✓")).catch(()=>location.href="mailto:"+EMAIL)}
+document.getElementById("copyMail").onclick=copyMail;
+
+/* vCard */
+function saveContact(){const v=["BEGIN:VCARD","VERSION:3.0","N:Kalandadze;David;;;","FN:David Kalandadze","TITLE:Go Backend Engineer · Applied AI / LLM Systems","EMAIL;TYPE=INTERNET:"+EMAIL,"URL:"+location.href.split("#")[0],"X-SOCIALPROFILE;TYPE=telegram:https://t.me/"+TG,"ADR;TYPE=HOME:;;;Dublin;;;Ireland","NOTE:Met at the job fair — Go backend & LLM systems. Telegram @"+TG,"END:VCARD"].join("\r\n");
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([v],{type:"text/vcard"}));a.download="David_Kalandadze.vcf";a.click();toast("Contact card downloaded")}
+document.getElementById("vcard").onclick=saveContact;
+
+/* QR */
+let qrMade=false;
+function showQr(){const m=document.getElementById("modal"),url=location.href.split("#")[0];
+ if(!qrMade&&window.QRCode){new QRCode(document.getElementById("qr"),{text:url,width:520,height:520,colorDark:"#0d1726",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});qrMade=true}
+ document.getElementById("qrUrl").textContent=url.replace(/^https?:\/\//,"");m.classList.add("show")}
+["qrBtn","qrBtn2"].forEach(id=>document.getElementById(id).onclick=showQr);
+document.getElementById("closeQr").onclick=()=>document.getElementById("modal").classList.remove("show");
+document.getElementById("modal").onclick=e=>{if(e.target.id==="modal")e.target.classList.remove("show")};
+addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.remove("show")});
+
+/* terminal */
+const out=document.getElementById("out"),cmd=document.getElementById("cmd");const hist=[];let hi=0;
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function print(h){out.innerHTML+=h+"\n";out.scrollTop=out.scrollHeight}
+const C={
+ help:()=>`<span class="y">available commands</span>
+  <span class="c">whoami</span>       short intro
+  <span class="c">skills</span>       tech stack
+  <span class="c">experience</span>   work history  (try <span class="c">experience avito</span>)
+  <span class="c">impact</span>       numbers
+  <span class="c">ai</span>           LLM things I've shipped
+  <span class="c">education</span>    degrees
+  <span class="c">contact</span>      how to reach me
+  <span class="c">cv</span>           download PDF
+  <span class="c">qr</span>           show QR code
+  <span class="c">vcard</span>        save contact to phone
+  <span class="c">clear</span>        clear screen
+  <span class="m">…and maybe a few hidden ones</span>`,
+ whoami:()=>`<span class="g">David Kalandadze</span> — Go Backend Engineer · Applied AI / LLM Systems
+Dublin, Ireland · open to remote
+Building high-load microservices and the LLM features that live on them.
+M.Sc. Computing @ ATU (in progress).`,
+ skills:()=>Object.entries(SKILLS).map(([g,l])=>`<span class="y">${g.padEnd(22)}</span>${l.join(", ")}`).join("\n"),
+ experience:(a)=>{const j=a&&JOBS.find(x=>x.id===a.toLowerCase()||x.co.toLowerCase().startsWith(a.toLowerCase()));
+  if(j)return `<span class="g">${j.role} @ ${j.co}</span>  <span class="m">${j.when}</span>\n<span class="v">[${j.stack.join(", ")}]</span>\n${j.desc}\n`+j.items.map(i=>"  → "+i[0].replace(/<\/?b>/g,"")).join("\n");
+  return JOBS.map(j=>`<span class="g">${j.co.padEnd(12)}</span>${j.role.padEnd(24)}<span class="m">${j.when}</span>`).join("\n")+`\n<span class="m">tip: experience ${JOBS.map(j=>j.id).join(" | ")}</span>`},
+ impact:()=>`<span class="g">5×</span>    SQL processing (LATERAL JOIN)            <span class="m">Avito</span>
+<span class="g">−60%</span>  manual call review (ML scoring)          <span class="m">Avito</span>
+<span class="g">4×</span>    S3 upload throughput                     <span class="m">CROC</span>
+<span class="g">2×</span>    Outbox performance                       <span class="m">Wildberries</span>
+<span class="g">1.5×</span>  geospatial export                        <span class="m">CROC</span>`,
+ ai:()=>`→ call summarization pipeline on LangChain / EINO
+→ RAG Q&A bot over internal documentation
+→ ML-based call quality assessment (−60% manual review)
+<span class="m">all in production, all in Go-land.</span>`,
+ education:()=>`<span class="g">M.Sc. Computing</span>              ATU, Ireland         <span class="m">2026 – 2027</span>
+<span class="g">B.Sc. Software Engineering</span>   BMSTU, Moscow        <span class="m">2020 – 2025</span>
+<span class="y">English</span> C1 · <span class="y">Russian</span> native`,
+ contact:()=>`email     <a href="mailto:${EMAIL}">${EMAIL}</a>
+telegram  <a href="https://t.me/${TG}" target="_blank" rel="noopener">@${TG}</a>
+location  Dublin, Ireland · remote ok`,
+ cv:()=>{const a=document.createElement("a");a.href="David_Kalandadze_CV.pdf";a.download="";a.click();return `<span class="g">downloading</span> David_Kalandadze_CV.pdf …`},
+ qr:()=>{showQr();return "opening QR…"},
+ vcard:()=>{saveContact();return `<span class="g">saved</span> David_Kalandadze.vcf`},
+ email:()=>{copyMail();return `copied ${EMAIL}`},
+ clear:()=>{out.innerHTML="";return null},
+ ls:()=>`<span class="c">projects/</span>  <span class="c">ideas/</span>  David_Kalandadze_CV.pdf  hire_me.sh`,
+ "./hire_me.sh":()=>C.hire(),
+ hire:()=>`<span class="g">✓ excellent decision.</span>\n`+C.contact(),
+ sudo:(a)=>/hire/.test(a||"")?`<span class="g">[sudo] permission granted.</span> scheduling interview…\n`+C.contact():`<span class="y">nice try.</span> try: sudo hire david`,
+ go:(a)=>a==="version"?"go version go1.25 darwin/arm64":`usage: go version`,
+ gopher:()=>`<span class="c">   ʕ◔ϖ◔ʔ  </span>  hi from the gopher`,
+ coffee:()=>`☕ brewing… concurrency without coffee is just parallelism.`,
+ exit:()=>`there is no escape. type <span class="c">contact</span> instead 🙂`,
+ rm:()=>`<span class="y">rm: refusing — this CV is append-only.</span>`
+};
+function run(line){const raw=line.trim();print(`<span class="g">david@dublin:~$</span> ${esc(raw)}`);if(!raw)return;
+ hist.push(raw);hi=hist.length;const [c,...rest]=raw.split(/\s+/);const f=C[c.toLowerCase()];
+ const r=f?f(rest.join(" ")):`command not found: ${esc(c)} — type <span class="c">help</span>`;if(r!==null)print(r)}
+document.getElementById("form").onsubmit=e=>{e.preventDefault();run(cmd.value);cmd.value=""};
+cmd.addEventListener("keydown",e=>{if(e.key==="ArrowUp"&&hi>0){cmd.value=hist[--hi];e.preventDefault()}
+ else if(e.key==="ArrowDown"){hi=Math.min(hist.length,hi+1);cmd.value=hist[hi]||""}
+ else if(e.key==="Tab"){e.preventDefault();const m=Object.keys(C).filter(k=>k.startsWith(cmd.value));if(m.length===1)cmd.value=m[0]}});
+document.querySelector(".term").addEventListener("click",()=>{if(!getSelection().toString())cmd.focus({preventScroll:true})});
+["whoami","impact","ai","experience","skills","contact","sudo hire david"].forEach(c=>{const b=document.createElement("button");b.textContent=c;b.onclick=()=>run(c);document.getElementById("quick").appendChild(b)});
+print(`<span class="m">Last login: ${new Date().toDateString()} on ttys001</span>\nWelcome. Type <span class="c">help</span> to get started.`);
+</script>
+</body>
+</html>
